@@ -57,7 +57,7 @@ pnpm start
 
 The bot should now be running and connected to your Discord server. You should see a message in the configured channel indicating that the Wallet Watch Bot is online.
 
-## Available Scripts
+### Available Scripts
 
 - `clean` - remove coverage data, Jest cache and transpiled files,
 - `prebuild` - lint source files and tests before building,

@@ -1,11 +1,11 @@
-import { Utils } from 'alchemy-sdk';
+import { Network, Utils } from 'alchemy-sdk';
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import {
   getBalance,
   getNftsForOwner,
   trackAddress,
 } from './alchemy-service.js';
-import { shortenAddress } from '../utils/index.js';
+import { getEtherscanUrl, shortenAddress } from '../utils/index.js';
 import { config } from '../utils/env.js';
 
 const client = new Client({
@@ -19,8 +19,6 @@ const client = new Client({
 
 const DISCORD_BOT_TOKEN = config.discord.botToken;
 const DISCORD_CHANNEL_ID = config.discord.channelId;
-
-let trackedAddress = '';
 
 export async function discordEvents() {
   client.once(Events.ClientReady, (c) => {
@@ -52,11 +50,11 @@ export async function discordEvents() {
 
     if (command === '!track') {
       const address = args[0];
-      trackedAddress = address.toLowerCase();
+      const trackedAddress = address.toLowerCase();
       message.channel.send(`🔎 Now tracking address: ${trackedAddress}`);
       console.log(`Tracking address: ${trackedAddress}`);
 
-      trackAddress(address, client);
+      trackAddress(trackedAddress, client);
     } else if (command === '!balance') {
       const address = args[0];
       if (!address) {
@@ -66,12 +64,12 @@ export async function discordEvents() {
         return;
       }
       try {
-        message.channel.send(':hourglass:');
+        message.channel.send(':hourglass: Getting balance ...');
         const balance = await getBalance(address);
         message.channel.send(
           `💰 Balance for address ${shortenAddress(
             address,
-          )}: ${Utils.formatEther(balance)} ETH`,
+          )}: **${Utils.formatEther(balance)}** ETH`,
         );
       } catch (error) {
         console.error(
@@ -91,10 +89,13 @@ export async function discordEvents() {
         return;
       }
       try {
+        message.channel.send(':hourglass: Getting NFTs ...');
         const nfts = await getNftsForOwner(address);
         if (nfts.ownedNfts.length === 0) {
           message.channel.send(
-            `🎨 No NFTs found for address ${shortenAddress(address)}`,
+            `🎨 No NFTs found for address [${shortenAddress(
+              address,
+            )}](${getEtherscanUrl(Network.ETH_SEPOLIA, address)})`,
           );
         } else {
           let nftMessage = `🎨 NFTs for address ${shortenAddress(address)}:\n`;

@@ -41,12 +41,12 @@ export async function trackAddress(address: string, client: Client<boolean>) {
 
           for (const transaction of block.transactions) {
             if (transaction.to && transaction.to.toLowerCase() === address) {
-              // Sending transaction found
+              // Receiving transaction found
               client.channels.cache
                 .get(DISCORD_CHANNEL_ID)
                 // @ts-ignore
                 .send(
-                  `💰 Transaction received: ${Utils.formatEther(
+                  `:inbox_tray: Transaction received: ${Utils.formatEther(
                     transaction.value,
                   )} ETH\nFrom: ${shortenAddress(
                     transaction.from,
@@ -56,12 +56,12 @@ export async function trackAddress(address: string, client: Client<boolean>) {
               transaction.from &&
               transaction.from.toLowerCase() === address
             ) {
-              // Receiving transaction found
+              // Sending transaction found
               client.channels.cache
                 .get(DISCORD_CHANNEL_ID)
                 // @ts-ignore
                 .send(
-                  `💸 Transaction sent: ${Utils.formatEther(
+                  `:outbox_tray: Transaction sent: ${Utils.formatEther(
                     transaction.value,
                   )} ETH\nFrom: ${shortenAddress(
                     transaction.from,

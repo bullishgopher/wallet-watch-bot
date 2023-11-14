@@ -30,19 +30,19 @@ export async function trackAddress(address, client) {
                     const block = await alchemy.core.getBlockWithTransactions(i);
                     for (const transaction of block.transactions) {
                         if (transaction.to && transaction.to.toLowerCase() === address) {
-                            // Sending transaction found
-                            client.channels.cache
-                                .get(DISCORD_CHANNEL_ID)
-                                // @ts-ignore
-                                .send(`💰 Transaction received: ${Utils.formatEther(transaction.value)} ETH\nFrom: ${shortenAddress(transaction.from)}\nTo: ${shortenAddress(transaction.to)}`);
-                        }
-                        else if (transaction.from &&
-                            transaction.from.toLowerCase() === address) {
                             // Receiving transaction found
                             client.channels.cache
                                 .get(DISCORD_CHANNEL_ID)
                                 // @ts-ignore
-                                .send(`💸 Transaction sent: ${Utils.formatEther(transaction.value)} ETH\nFrom: ${shortenAddress(transaction.from)}\nTo: ${shortenAddress(transaction.to)}`);
+                                .send(`:inbox_tray: Transaction received: ${Utils.formatEther(transaction.value)} ETH\nFrom: ${shortenAddress(transaction.from)}\nTo: ${shortenAddress(transaction.to)}`);
+                        }
+                        else if (transaction.from &&
+                            transaction.from.toLowerCase() === address) {
+                            // Sending transaction found
+                            client.channels.cache
+                                .get(DISCORD_CHANNEL_ID)
+                                // @ts-ignore
+                                .send(`:outbox_tray: Transaction sent: ${Utils.formatEther(transaction.value)} ETH\nFrom: ${shortenAddress(transaction.from)}\nTo: ${shortenAddress(transaction.to)}`);
                         }
                     }
                 }
