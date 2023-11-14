@@ -1,3 +1,5 @@
+import { discordEvents } from "./services/discord-service.js";
+
 /**
  * Some predefined delay values (in milliseconds).
  */
@@ -33,3 +35,5 @@ export async function greeter(name: any) {
   // The name parameter should be of type string. Any is used only to trigger the rule.
   return await delayedHello(name, Delays.Short);
 }
+
+discordEvents()
