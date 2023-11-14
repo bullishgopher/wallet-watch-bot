@@ -36,6 +36,10 @@
   "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
   "license": "Apache-2.0",
   "dependencies": {
+    "alchemy-sdk": "^2.11.0",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "ethers": "^6.8.1",
     "tslib": "~2.6"
   },
   "volta": {

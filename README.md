@@ -52,7 +52,7 @@ ALCHEMY_API_KEY=
 Start the bot:
 
 ```bash
-node index.js
+pnpm start
 ```
 
 The bot should now be running and connected to your Discord server. You should see a message in the configured channel indicating that the Wallet Watch Bot is online.
