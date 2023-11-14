@@ -3,6 +3,7 @@ import { Client, Events, GatewayIntentBits } from 'discord.js';
 import {
   getBalance,
   getNftsForOwner,
+  stopTracking,
   trackAddress,
 } from './alchemy-service.js';
 import { getEtherscanUrl, shortenAddress } from '../utils/index.js';
@@ -113,11 +114,15 @@ export async function discordEvents() {
           '❌ Error: Could not fetch NFTs. Please make sure the Ethereum address is correct.',
         );
       }
+    } else if (command === '!stop') {
+      stopTracking();
+      message.channel.send(':octagonal_sign: Wallet tracking has stopped.');
     } else if (command === '!help') {
       const helpMessage = `
 📗 **Available Commands:**
 \`\`\`
 !track <address>   - Track an Ethereum address for incoming and outgoing transactions
+!stop              - Stop tracking
 !balance <address> - Check the ETH balance of an Ethereum address
 !nfts <address>    - List NFTs owned by an Ethereum address
 !help              - Show help message

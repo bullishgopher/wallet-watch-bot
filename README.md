@@ -131,3 +131,15 @@ Licensed under the APLv2. See the [LICENSE](https://github.com/bullishgopher/wal
 [nodejs-esm]: https://nodejs.org/docs/latest-v16.x/api/esm.html
 [ts47-esm]: https://devblogs.microsoft.com/typescript/announcing-typescript-5-1/#esm-nodejs
 [editorconfig]: https://editorconfig.org
+
+### Resources
+
+[Discord.js Guide - Frequently asked Questions](https://discordjs.guide/popular-topics/faq.html#legend)
+
+[Discord.js Docs](https://discord.js.org/docs/packages/discord.js/main)
+
+[Node + TypeScript Template](https://github.com/jsynowiec/node-typescript-boilerplate)
+
+[How to Make a Discord Bot: an Overview and Tutorial](https://www.toptal.com/chatbot/how-to-make-a-discord-bot)
+
+[How to make a Discord bot with code in 5 steps](https://autocode.com/guides/how-to-build-a-discord-bot/)

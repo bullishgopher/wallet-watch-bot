@@ -20,11 +20,13 @@ export async function getNftsForOwner(address: string) {
   return alchemy.nft.getNftsForOwner(address);
 }
 
+let trackIntervalId;
+
 export async function trackAddress(address: string, client: Client<boolean>) {
   try {
     let lastBlockNumber = await alchemy.core.getBlockNumber();
 
-    setInterval(async () => {
+    trackIntervalId = setInterval(async () => {
       try {
         const currentBlockNumber = await alchemy.core.getBlockNumber();
 
@@ -79,4 +81,8 @@ export async function trackAddress(address: string, client: Client<boolean>) {
   } catch (error) {
     console.error('❌ Error while initializing tracker:', error.message);
   }
+}
+
+export function stopTracking() {
+  clearInterval(trackIntervalId);
 }
