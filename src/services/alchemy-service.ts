@@ -20,7 +20,7 @@ export async function getNftsForOwner(address: string) {
   return alchemy.nft.getNftsForOwner(address);
 }
 
-let trackIntervalId;
+let trackIntervalId: ReturnType<typeof setInterval>;
 
 export async function trackAddress(address: string, client: Client<boolean>) {
   try {
