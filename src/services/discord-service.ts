@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import { Utils } from 'alchemy-sdk';
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import {
@@ -7,8 +6,7 @@ import {
   trackAddress,
 } from './alchemy-service.js';
 import { shortenAddress } from '../utils/index.js';
-
-dotenv.config();
+import { config } from '../utils/env.js';
 
 const client = new Client({
   intents: [
@@ -19,8 +17,8 @@ const client = new Client({
   ],
 });
 
-const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
-const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
+const DISCORD_BOT_TOKEN = config.discord.botToken;
+const DISCORD_CHANNEL_ID = config.discord.channelId;
 
 let trackedAddress = '';
 
@@ -58,7 +56,7 @@ export async function discordEvents() {
       message.channel.send(`🔎 Now tracking address: ${trackedAddress}`);
       console.log(`Tracking address: ${trackedAddress}`);
 
-      trackAddress(address, client)
+      trackAddress(address, client);
     } else if (command === '!balance') {
       const address = args[0];
       if (!address) {
@@ -68,6 +66,7 @@ export async function discordEvents() {
         return;
       }
       try {
+        message.channel.send(':hourglass:');
         const balance = await getBalance(address);
         message.channel.send(
           `💰 Balance for address ${shortenAddress(

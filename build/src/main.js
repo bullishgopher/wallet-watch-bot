@@ -1,4 +1,4 @@
-import { discordEvents } from "./services/discord-service.js";
+import { discordEvents } from './services/discord-service.js';
 /**
  * Some predefined delay values (in milliseconds).
  */

@@ -1,15 +1,16 @@
 import { Network, Alchemy, Utils } from 'alchemy-sdk';
 import { Client } from 'discord.js';
 import { shortenAddress } from '../utils/index.js';
+import { config } from '../utils/env.js';
 
 const settings = {
-  apiKey: process.env.ALCHEMY_API_KEY,
+  apiKey: config.alchemy.apiKey,
   network: Network.ETH_SEPOLIA,
 };
 
 const alchemy = new Alchemy(settings);
 
-const DISCORD_CHANNEL_ID = process.env.DISCORD_CHANNEL_ID;
+const DISCORD_CHANNEL_ID = config.discord.channelId;
 
 export async function getBalance(address: string) {
   return alchemy.core.getBalance(address, 'latest');

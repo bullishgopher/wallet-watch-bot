@@ -1,4 +1,4 @@
-import { discordEvents } from "./services/discord-service.js";
+import { discordEvents } from './services/discord-service.js';
 
 /**
  * Some predefined delay values (in milliseconds).
@@ -36,4 +36,4 @@ export async function greeter(name: any) {
   return await delayedHello(name, Delays.Short);
 }
 
-discordEvents()
+discordEvents();
