@@ -1,42 +1,18 @@
-import { Delays, greeter } from '../src/main.js';
+import { Network } from 'alchemy-sdk';
+import { getEtherscanUrl, shortenAddress } from '../src/utils/index.js';
 
-describe('greeter function', () => {
-  const name = 'John';
-  let hello: string;
-
-  let timeoutSpy: jest.SpyInstance;
-
-  // Act before assertions
-  beforeAll(async () => {
-    // Read more about fake timers
-    // http://facebook.github.io/jest/docs/en/timer-mocks.html#content
-    // Jest 27 now uses "modern" implementation of fake timers
-    // https://jestjs.io/blog/2021/05/25/jest-27#flipping-defaults
-    // https://github.com/facebook/jest/pull/5171
-    jest.useFakeTimers();
-    timeoutSpy = jest.spyOn(global, 'setTimeout');
-
-    const p: Promise<string> = greeter(name);
-    jest.runOnlyPendingTimers();
-    hello = await p;
+describe('utils', () => {
+  it('should provide a shortened address', () => {
+    const address = '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045';
+    const shortenedAddress = shortenAddress(address);
+    expect(shortenedAddress).toBe('0xd8dA...6045');
   });
 
-  // Teardown (cleanup) after assertions
-  afterAll(() => {
-    timeoutSpy.mockRestore();
-  });
-
-  // Assert if setTimeout was called properly
-  it('delays the greeting by 2 seconds', () => {
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(
-      expect.any(Function),
-      Delays.Long,
+  it('should provide etherscan url', () => {
+    const address = '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045';
+    const etherscanUrl = getEtherscanUrl(Network.ETH_SEPOLIA, address);
+    expect(etherscanUrl).toBe(
+      `https://sepolia.etherscan.io/address/${address}`,
     );
-  });
-
-  // Assert greeter result
-  it('greets a user with `Hello, {name}` message', () => {
-    expect(hello).toBe(`Hello, ${name}`);
   });
 });
