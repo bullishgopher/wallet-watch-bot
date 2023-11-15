@@ -15,7 +15,8 @@ This tool enables you to monitor Ethereum wallets, check their ETH balances, and
 
 ### Video
 
-[![video](assets/bot.png)](https://vimeo.com/884499043?share=copy)
+[<img src="assets/bot.png" alt="wallet watch bot" width="200"/>
+](https://vimeo.com/884499043?share=copy)
 
 🏃🏽 Instant Value: All basic tools included and configured:
 
