@@ -1,0 +1,69 @@
+🚀 Ethereum Wallet Tracker Bot - Your Personal Crypto Companion
+
+Welcome to the Ethereum Wallet Tracker Bot, your go-to Discord companion for monitoring Ethereum wallet activities with precision and ease. This powerful bot, crafted with Node.js and Discord.js, empowers you to stay on top of your Ethereum assets effortlessly.
+
+🌐 Key Features:
+
+Transaction Tracking:
+Track an Ethereum address for incoming and outgoing transactions using !track <address>.
+Stop tracking a specific address with !stop.
+
+Native Token Balances:
+Check the ETH balance of any Ethereum address with !balance <address>.
+
+NFT Asset Management:
+List NFTs owned by an Ethereum address using !nfts <address>.
+
+Customizable Alerts:
+Tailor the bot to your preferences with customizable alert settings.
+Set thresholds for transaction amounts, native token balances, and more to receive alerts that matter to you.
+
+User-Friendly Commands:
+For additional assistance, use !help to access the help message and explore all available features.
+
+💼 Use Cases:
+
+Investment Tracking:
+Keep a close eye on your Ethereum wallet's financial activities, ensuring you never miss a crucial transaction.
+
+Portfolio Management:
+Manage your native token holdings and track your NFT collection seamlessly, all within Discord.
+
+Security Alerts:
+Receive instant notifications for unexpected or large transactions, enhancing the security of your assets.
+
+🤖 How to Use:
+
+Track Transactions:
+Track an Ethereum address for incoming and outgoing transactions using !track <address>.
+
+Stop Tracking:
+Stop tracking a specific address with !stop.
+
+Check Balances:
+Check the ETH balance of any Ethereum address with !balance <address>.
+
+List NFTs:
+List NFTs owned by an Ethereum address using !nfts <address>.
+
+Help:
+For additional assistance, use !help to access the help message and explore all available features.
+
+🛠️ Technical Details:
+Built with Node.js and Discord.js:
+Our bot leverages the power of Node.js for robust backend functionality and Discord.js for seamless integration with Discord servers.
+
+Secure Wallet Connection:
+Your wallet information is encrypted and handled with the utmost security, ensuring your data remains private.
+
+Regular Updates:
+Expect continuous updates and improvements as we strive to enhance your experience with the Ethereum Wallet Tracker Bot.
+
+🤝 Get Started:
+Invite the Ethereum Wallet Tracker Bot to your Discord server and embark on a journey of effortless Ethereum wallet management and monitoring.
+
+🔗 Invite the Bot
+Have questions, suggestions, or need assistance? Join our community Discord server for support and discussions.
+
+🔗 Join Our Discord Community
+Invest with confidence, manage your assets seamlessly, and explore the world of Ethereum with the Ethereum Wallet Tracker Bot. Your crypto adventure starts here! 🚀

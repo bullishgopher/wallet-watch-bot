@@ -24,4 +24,7 @@ export const config: IConfig = {
   alchemy: {
     apiKey: getEnv('ALCHEMY_API_KEY'),
   },
+  openai: {
+    apiKey: getEnv('OPENAI_API_KEY'),
+  },
 };

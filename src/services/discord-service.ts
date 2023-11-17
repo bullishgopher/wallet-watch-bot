@@ -8,6 +8,7 @@ import {
 } from './alchemy-service.js';
 import { getEtherscanUrl, shortenAddress } from '../utils/index.js';
 import { config } from '../utils/env.js';
+import { getAnswer, trainBot } from './langchain-service.js';
 
 const client = new Client({
   intents: [
@@ -117,6 +118,10 @@ export async function discordEvents() {
     } else if (command === '!stop') {
       stopTracking();
       message.channel.send(':octagonal_sign: Wallet tracking has stopped.');
+    } else if (command === '!train') {
+      message.channel.send(':hourglass: AI bot is training ...');
+      const training = await trainBot();
+      message.channel.send(training);
     } else if (command === '!help') {
       const helpMessage = `
 📗 **Available Commands:**
@@ -129,6 +134,10 @@ export async function discordEvents() {
 \`\`\`
 `;
       message.channel.send(helpMessage);
+    } else {
+      const msg = args.shift();
+      const answer = await getAnswer(msg);
+      message.channel.send(answer);
     }
   });
 }

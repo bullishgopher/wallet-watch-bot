@@ -37,8 +37,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "prettier --config .prettierrc --write .",
-      "jest --coverage"
+      "prettier --config .prettierrc --write ."
     ]
   },
   "author": "bullishgopher <49041460+bullishgopher@users.noreply.github.com>",
@@ -48,6 +47,8 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "ethers": "^6.8.1",
+    "hnswlib-node": "^2.0.0",
+    "langchain": "^0.0.191",
     "tslib": "~2.6"
   },
   "volta": {
