@@ -2,7 +2,7 @@
   "name": "wallet-watch-bot",
   "version": "0.1.0",
   "description": "Sends a message to the discord channel when a transaction occurs for a specified Ethereum address",
-  "type": "module",
+  "type": "commonjs",
   "engines": {
     "node": ">= 18.12 <19"
   },
@@ -19,7 +19,7 @@
     "lint-staged": "^15.1.0",
     "prettier": "3.0.3",
     "rimraf": "5.0.5",
-    "ts-api-utils": "~1.0",
+    "ts-api-utils": "1.0.3",
     "ts-jest": "29.1.1",
     "typescript": "5.1.6"
   },
@@ -47,9 +47,9 @@
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "ethers": "^6.8.1",
-    "hnswlib-node": "^2.0.0",
+    "hnswlib-node": "^1.4.2",
     "langchain": "^0.0.191",
-    "tslib": "~2.6"
+    "tslib": "2.6.2"
   },
   "volta": {
     "node": "18.12.1"

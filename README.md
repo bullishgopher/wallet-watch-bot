@@ -56,6 +56,7 @@ Create `.env` in the project directory and add your Discord bot token and Alchem
 DISCORD_BOT_TOKEN=
 DISCORD_CHANNEL_ID=
 ALCHEMY_API_KEY=
+OPENAI_API_KEY=
 ```
 
 ### Running the Bot

@@ -1,9 +1,3 @@
-// import fs from 'fs';
-// import { OpenAI } from 'langchain/llms/openai';
-// import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
-// import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
-// import { RetrievalQAChain, loadQARefineChain } from 'langchain/chains';
-// import { HNSWLib } from 'langchain/vectorstores/hnswlib';
 import { config } from '../utils/env.js';
 
 const { OpenAI } = require('langchain/llms/openai');
@@ -42,10 +36,7 @@ export async function getAnswer(question: string) {
 
 export async function trainBot() {
   try {
-    const trainingText = fs.readFileSync(
-      '../../assets/training-data.txt',
-      'utf8',
-    );
+    const trainingText = fs.readFileSync('assets/training-data.txt', 'utf8');
     const textSplitter = new RecursiveCharacterTextSplitter({
       chunkSize: 1000,
     });
