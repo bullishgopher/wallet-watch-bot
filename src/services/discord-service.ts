@@ -6,7 +6,7 @@ import {
   stopTracking,
   trackAddress,
 } from './alchemy-service.js';
-import { getEtherscanUrl, shortenAddress } from '../utils/index.js';
+import { getEtherscanUrl, isAddress, shortenAddress } from '../utils/index.js';
 import { config } from '../utils/env.js';
 
 const client = new Client({
@@ -51,6 +51,14 @@ export async function discordEvents() {
 
     if (command === '!track') {
       const address = args[0];
+      if (!address) {
+        message.channel.send(`:warning: Input wallet address!`);
+        return;
+      }
+      if (!isAddress(address)) {
+        message.channel.send(`:warning: Input valid wallet address!`);
+        return;
+      }
       const trackedAddress = address.toLowerCase();
       message.channel.send(`🔎 Now tracking address: ${trackedAddress}`);
       console.log(`Tracking address: ${trackedAddress}`);
@@ -62,6 +70,10 @@ export async function discordEvents() {
         message.channel.send(
           '❗ Please provide an Ethereum address. Example: `!balance 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045`',
         );
+        return;
+      }
+      if (!isAddress(address)) {
+        message.channel.send(`:warning: Input valid wallet address!`);
         return;
       }
       try {
